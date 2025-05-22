@@ -1,0 +1,39 @@
+services:
+  # 後端 API 服務
+  - type: web
+    name: quantum-divination-api
+    env: node
+    region: singapore
+    buildCommand: cd src/server && npm install
+    startCommand: cd src/server && node server.js
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        sync: false
+      - key: NODE_ENV
+        value: production
+
+  # 前端應用
+  - type: web
+    name: quantum-divination
+    env: static
+    region: singapore
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: quantum-divination-api
+          type: web
+          property: url
+        postfix: /api 
