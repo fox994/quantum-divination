@@ -19,7 +19,6 @@ services:
   - type: web
     name: quantum-divination
     env: static
-    region: singapore
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
     headers:
@@ -35,5 +34,5 @@ services:
         fromService:
           name: quantum-divination-api
           type: web
-          property: url
+          property: host
         postfix: /api 
