@@ -31,8 +31,4 @@ services:
         destination: /index.html
     envVars:
       - key: VITE_API_URL
-        fromService:
-          name: quantum-divination-api
-          type: web
-          property: host
-        postfix: /api 
+        value: https://quantum-divination-api.onrender.com/api 
