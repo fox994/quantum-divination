@@ -37,7 +37,7 @@
 
 ```bash
 # 克隆儲存庫
-git clone <repository-url>
+git clone https://github.com/fox994/quantum-divination.git
 
 # 安裝依賴
 cd quantum-divination
@@ -90,4 +90,4 @@ npm run dev
 
 ## 授權
 
-本專案採用 MIT 授權。 
+本專案採用 MIT 授權。
